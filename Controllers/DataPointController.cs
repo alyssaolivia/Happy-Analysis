@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Happy_Analysis.Data;
 using Happy_Analysis.Models;
+using System.Net;
 
 namespace Happy_Analysis.Controllers
 {
@@ -152,33 +153,40 @@ namespace Happy_Analysis.Controllers
             return _context.DataPoints.Any(e => e.ID == id);
         }
 
-        public void LoadDataPoints()
-        {
-            string path = "D:\\Apziva\\ACME-HappinessSurvey2020.csv";
-            string[] data = System.IO.File.ReadAllLines(path);
-            int lineCount = 0;
-            foreach(string line in data)
+        public void LoadDataPoints(string url)
+        { 
+            using (var client = new WebClient())
             {
-                if (lineCount != 0)
+                client.DownloadFile(url, "dataset.csv");
+            }
+            if (System.IO.File.Exists("dataset.csv"))
+            {
+                string path = System.IO.Path.GetFullPath("dataset.csv");
+                string[] data = System.IO.File.ReadAllLines(path);
+                int lineCount = 0;
+                foreach (string line in data)
                 {
-                    string[] row = line.Split(new char[] { ',' });
-                    DataPoint dataPoint = new DataPoint
+                    if (lineCount != 0)
                     {
-                        Y = int.Parse(row[0]),
-                        X1 = int.Parse(row[1]),
-                        X2 = int.Parse(row[2]),
-                        X3 = int.Parse(row[3]),
-                        X4 = int.Parse(row[4]),
-                        X5 = int.Parse(row[5]),
-                        X6 = int.Parse(row[6])
-                    };
-                    if (ModelState.IsValid)
-                    {
-                        _context.Add(dataPoint);
-                        _context.SaveChanges();
+                        string[] row = line.Split(new char[] { ',' });
+                        DataPoint dataPoint = new DataPoint
+                        {
+                            Y = int.Parse(row[0]),
+                            X1 = int.Parse(row[1]),
+                            X2 = int.Parse(row[2]),
+                            X3 = int.Parse(row[3]),
+                            X4 = int.Parse(row[4]),
+                            X5 = int.Parse(row[5]),
+                            X6 = int.Parse(row[6])
+                        };
+                        if (ModelState.IsValid)
+                        {
+                            _context.Add(dataPoint);
+                            _context.SaveChanges();
+                        }
                     }
+                    lineCount++;
                 }
-                lineCount++;
             }
         }
     }
