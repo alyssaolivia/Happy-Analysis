@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Happy_Analysis.Models.DataModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="d-lg-inline-block btn btn-primary" asp-action="Create">Create New</a>&nbsp;&nbsp;
+    <a class="d-lg-inline-block btn btn-primary" asp-action="ExecuteAll">Execute All Models</a>
+</p>
+<table class="table" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Percentage1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Percentage2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Percentage3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Percentage4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Percentage5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Percentage6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Percentage1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Percentage2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Percentage3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Percentage4)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Percentage5)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Percentage6)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a> |
+                    <a asp-action="Execute" asp-route-id="@item.ID">Run</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts
+{
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="~/js/table.js"></script>
+}

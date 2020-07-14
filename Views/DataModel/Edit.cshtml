@@ -1,0 +1,69 @@
+﻿@model Happy_Analysis.Models.DataModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>DataModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Percentage1" class="control-label"></label>
+                <input asp-for="Percentage1" class="form-control" />
+                <span asp-validation-for="Percentage1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Percentage2" class="control-label"></label>
+                <input asp-for="Percentage2" class="form-control" />
+                <span asp-validation-for="Percentage2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Percentage3" class="control-label"></label>
+                <input asp-for="Percentage3" class="form-control" />
+                <span asp-validation-for="Percentage3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Percentage4" class="control-label"></label>
+                <input asp-for="Percentage4" class="form-control" />
+                <span asp-validation-for="Percentage4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Percentage5" class="control-label"></label>
+                <input asp-for="Percentage5" class="form-control" />
+                <span asp-validation-for="Percentage5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Percentage6" class="control-label"></label>
+                <input asp-for="Percentage6" class="form-control" />
+                <span asp-validation-for="Percentage6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Created" class="control-label"></label>
+                <input asp-for="Created" class="form-control" />
+                <span asp-validation-for="Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

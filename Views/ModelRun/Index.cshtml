@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Happy_Analysis.Models.ModelRun>
+
+@{
+    ViewData["Title"] = "Index";
+    const decimal success = (decimal) 0.73;
+    string successOrFailure = "danger";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReferencePoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.F1_Score)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Run_Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferencePoint)
+            </td>
+            <td>
+                @{if (item.F1_Score >= success)
+                            successOrFailure = "success";
+                    <span class="badge badge-@successOrFailure">@Html.DisplayFor(modelItem => item.F1_Score)</span>
+                }
+                @{successOrFailure = "danger";}
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Run_Date)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts
+{
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="~/js/table.js"></script>
+}

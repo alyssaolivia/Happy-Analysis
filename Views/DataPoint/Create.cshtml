@@ -1,0 +1,75 @@
+﻿@model Happy_Analysis.Models.DataPoint
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>DataPoint</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Load">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="file" id="FilePath" accept=".csv" name="FilePath" class="form-control"/>
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Load" class="btn btn-primary" />
+            </div>
+        </form>
+        <br />
+        <br />
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="X1" class="control-label"></label>
+                <input asp-for="X1" class="form-control" />
+                <span asp-validation-for="X1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="X2" class="control-label"></label>
+                <input asp-for="X2" class="form-control" />
+                <span asp-validation-for="X2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="X3" class="control-label"></label>
+                <input asp-for="X3" class="form-control" />
+                <span asp-validation-for="X3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="X4" class="control-label"></label>
+                <input asp-for="X4" class="form-control" />
+                <span asp-validation-for="X4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="X5" class="control-label"></label>
+                <input asp-for="X5" class="form-control" />
+                <span asp-validation-for="X5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="X6" class="control-label"></label>
+                <input asp-for="X6" class="form-control" />
+                <span asp-validation-for="X6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Y" class="control-label"></label>
+                <input asp-for="Y" class="form-control" />
+                <span asp-validation-for="Y" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
