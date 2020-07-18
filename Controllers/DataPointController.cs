@@ -152,12 +152,16 @@ namespace Happy_Analysis.Controllers
         {
             return _context.DataPoints.Any(e => e.ID == id);
         }
+        public IActionResult Upload()
+        {
+            return View();
+        }
 
-        public void LoadDataPoints(string url)
+        public IActionResult Upload([Bind("LocationURL")] Dataset dataset)
         { 
             using (var client = new WebClient())
             {
-                client.DownloadFile(url, "dataset.csv");
+                client.DownloadFile(dataset.LocationURL, "dataset.csv");
             }
             if (System.IO.File.Exists("dataset.csv"))
             {
@@ -166,7 +170,7 @@ namespace Happy_Analysis.Controllers
                 int lineCount = 0;
                 foreach (string line in data)
                 {
-                    if (lineCount != 0)
+                    if (lineCount != 0)//assumption: data has headers so skip them
                     {
                         string[] row = line.Split(new char[] { ',' });
                         DataPoint dataPoint = new DataPoint
@@ -187,7 +191,9 @@ namespace Happy_Analysis.Controllers
                     }
                     lineCount++;
                 }
+                return RedirectToAction(nameof(Index));
             }
+            return View();
         }
     }
 }
