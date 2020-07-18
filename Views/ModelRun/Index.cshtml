@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Index";
     const decimal success = (decimal) 0.73;
-    string successOrFailure = "danger";
 }
 
 <h1>Index</h1>
@@ -24,6 +23,9 @@
                 @Html.DisplayNameFor(model => model.F1_Score)
             </th>
             <th>
+                Test Status
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Run_Date)
             </th>
             <th></th>
@@ -40,11 +42,19 @@
                 @Html.DisplayFor(modelItem => item.ReferencePoint)
             </td>
             <td>
-                @{if (item.F1_Score >= success)
-                            successOrFailure = "success";
-                    <span class="badge badge-@successOrFailure">@Html.DisplayFor(modelItem => item.F1_Score)</span>
+                @Html.DisplayFor(modelItem => item.F1_Score)
+            </td>
+            <td>
+                @{
+                    if (item.F1_Score >= success)
+                    {
+                        <button class="btn btn-success">Success</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-danger">Failure</button>
+                    }
                 }
-                @{successOrFailure = "danger";}
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Run_Date)
