@@ -3,6 +3,34 @@
 }
 
 <div>
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4 jumbotron">Welcome</h1>
+</div>
+<div>
+    <h2 class="display-4">Predicting Customer Happiness</h2>
+    <p class="lead">Net Promoter Score is a popular measure for gauging customer satisfication and scores 3 - 5 were viewed as satisfactory encompassing neutrality.
+    The dataset contained the below attributes:
+    </p>
+    <p>
+        Y = target attribute (Y) with values indicating 0 (unhappy) and 1 (happy) customers<br />
+        X1 = my order was delivered on time<br />
+        X2 = contents of my order was as I expected<br />
+        X3 = I ordered everything I wanted to order<br />
+        X4 = I paid a good price for my order<br />
+        X5 = I am satisfied with my courier<br />
+        X6 = the app makes ordering easy for me
+    </p>
+    <br />
+    <p class="lead">
+        47 models were used in development and the method of a weighted average was used. For each execution of a model a target value, also referred to as a reference point, was assigned.
+        If the weighted average was equal to or exceeded a reference point, it was deemed that a customer was happy (1) otherwise the customer was unhappy (0). Out of the 47 models developed, I recommend W15. 
+        W15 is the model that a weight of 0% was assigned to X2 and X5 and an equal weight of 25% was distributed to the remaining X 
+        attributes. <br /><br />
+        A reference point or a baseline of 3.5 was used to determine the new target attribute with a F1 score of 73%. 3.5 is the midpoint between 3 (a neutral score) and 4 (the first satisfactory score).<br /><br />
+        <a asp-controller="ModelRun" asp-action="Index">See All Execution Results Here >></a>
+    </p>
+    <p style="text-align:center">
+        <a href="https://www.freepik.com/free-photos-vectors/illustration">
+        <img class="align-content-center" src="~/images/2978479.jpg" height="700" width="800"/>
+        </a>
+    </p>
 </div>
