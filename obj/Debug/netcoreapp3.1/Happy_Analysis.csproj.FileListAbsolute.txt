@@ -362,3 +362,4 @@ D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Happy_Analysis.dll
 D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Happy_Analysis.pdb
 D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Happy_Analysis.genruntimeconfig.cache
 D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Happy_Analysis.csprojAssemblyReference.cache
+D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\DataModel\Upload.cshtml.g.cs
