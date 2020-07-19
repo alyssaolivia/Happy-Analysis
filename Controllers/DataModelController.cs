@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Happy_Analysis.Data;
 using Happy_Analysis.Models;
 using System.Configuration;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace Happy_Analysis.Controllers
 {
@@ -161,9 +163,33 @@ namespace Happy_Analysis.Controllers
             return _context.Models.Any(e => e.ID == id);
         }
 
-        public void LoadDataModels()
+        public IActionResult Upload()
         {
-            string path = "D:\\Apziva\\Models.csv";
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upload([Bind("file")] IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                ViewBag.Message = "File upload was unsuccessful";
+                return Content("File not selected");
+            }
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", file.FileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            LoadDataModels(path);
+
+            return RedirectToAction("Index");
+        }
+
+        public void LoadDataModels(string path)
+        {
             string[] data = System.IO.File.ReadAllLines(path);
             foreach (string line in data)
             {
