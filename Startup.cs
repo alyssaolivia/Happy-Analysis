@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Happy_Analysis.Data;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace Happy_Analysis
 {
@@ -28,6 +30,10 @@ namespace Happy_Analysis
             services.AddControllersWithViews();
             services.AddDbContext<AnalysisContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("AnalysisContext")));
+            services.AddSingleton<IFileProvider>(
+            new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

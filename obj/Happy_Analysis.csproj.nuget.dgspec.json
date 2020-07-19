@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\source\\repos\\Happy_Analysis\\Happy_Analysis.csproj": {}
+    "D:\\source\\repos\\clean\\Happy_Analysis\\Happy_Analysis.csproj": {}
   },
   "projects": {
-    "D:\\source\\repos\\Happy_Analysis\\Happy_Analysis.csproj": {
+    "D:\\source\\repos\\clean\\Happy_Analysis\\Happy_Analysis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\source\\repos\\Happy_Analysis\\Happy_Analysis.csproj",
+        "projectUniqueName": "D:\\source\\repos\\clean\\Happy_Analysis\\Happy_Analysis.csproj",
         "projectName": "Happy_Analysis",
-        "projectPath": "D:\\source\\repos\\Happy_Analysis\\Happy_Analysis.csproj",
+        "projectPath": "D:\\source\\repos\\clean\\Happy_Analysis\\Happy_Analysis.csproj",
         "packagesPath": "C:\\Users\\Alyssa Jordan\\.nuget\\packages\\",
-        "outputPath": "D:\\source\\repos\\Happy_Analysis\\obj\\",
+        "outputPath": "D:\\source\\repos\\clean\\Happy_Analysis\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

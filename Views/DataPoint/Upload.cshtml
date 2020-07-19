@@ -1,4 +1,4 @@
-﻿@model Happy_Analysis.Models.Dataset
+﻿
 @{
     ViewData["Title"] = "Upload DataPoints";
 }
@@ -10,16 +10,12 @@
     <hr />
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Upload">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label class="control-label">URL to DataFile</label>
-                    <input asp-for="LocationURL" class="form-control" type="url" />
-                    <span class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Submit" class="btn btn-primary" />
-                </div>
+            <form asp-action="Upload" method="post" enctype="multipart/form-data">
+                <label>Upload CSV:</label>
+                <input class="form-control-file" type="file" name="file" accept=".csv" /><br/>
+                <input class="btn btn-primary" type="submit" value="Upload File" />
+                <br><br>
+                @ViewBag.Message
             </form>
         </div>
     </div>

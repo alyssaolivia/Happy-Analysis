@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4I1Y74vgRbKPUULPOrO2JQvKp1JAcoWBTjvdLidPsvqNmXOmsdLvYXACCZzatrHtYNwAqbnsQ2zQVGi+0P5n3g==",
+  "dgSpecHash": "K+idgPw2BIRC7Am4XMn5lN0CEoYsp+JExC60KFUn/yE8nAS6fOBSqSxglDrsAf0Zf0XV+74rZaDuiWJ09e2kQQ==",
   "success": true,
-  "projectFilePath": "D:\\source\\repos\\Happy_Analysis\\Happy_Analysis.csproj",
+  "projectFilePath": "D:\\source\\repos\\clean\\Happy_Analysis\\Happy_Analysis.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alyssa Jordan\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Alyssa Jordan\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

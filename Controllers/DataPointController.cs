@@ -8,7 +8,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Happy_Analysis.Data;
 using Happy_Analysis.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Net;
+using Microsoft.AspNetCore.Http;
+using System.Web;
 
 namespace Happy_Analysis.Controllers
 {
@@ -156,16 +159,31 @@ namespace Happy_Analysis.Controllers
         {
             return View();
         }
-
-        public IActionResult Upload([Bind("LocationURL")] Dataset dataset)
-        { 
-            using (var client = new WebClient())
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upload([Bind("file")]IFormFile file)
+        {
+            if (file == null || file.Length == 0)
             {
-                client.DownloadFile(dataset.LocationURL, "dataset.csv");
+                ViewBag.Message = "File upload was unsuccessful";
+                return Content("File not selected");
             }
-            if (System.IO.File.Exists("dataset.csv"))
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", file.FileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
             {
-                string path = System.IO.Path.GetFullPath("dataset.csv");
+                await file.CopyToAsync(stream);
+            }
+            LoadDataPoints(path);
+
+            return RedirectToAction("Index");
+        }
+
+    public void LoadDataPoints(string path)
+    {
+            if (System.IO.File.Exists(path))
+            {
                 string[] data = System.IO.File.ReadAllLines(path);
                 int lineCount = 0;
                 foreach (string line in data)
@@ -191,9 +209,7 @@ namespace Happy_Analysis.Controllers
                     }
                     lineCount++;
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View();
         }
     }
 }

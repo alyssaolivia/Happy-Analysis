@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Happy_Analysis.Data;
 using Happy_Analysis.Models;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Happy_Analysis.Controllers
 {
     public class ModelRunController : Controller
