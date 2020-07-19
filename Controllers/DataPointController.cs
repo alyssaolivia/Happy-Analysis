@@ -8,7 +8,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Happy_Analysis.Data;
 using Happy_Analysis.Models;
-using System.Net;
+using System.Web;
+using Microsoft.Extensions.Http;
+using Microsoft.AspNetCore.Http;
 
 namespace Happy_Analysis.Controllers
 {
@@ -24,7 +26,6 @@ namespace Happy_Analysis.Controllers
         // GET: DataPoint
         public async Task<IActionResult> Index()
         {
-            //LoadDataPoints();
             return View(await _context.DataPoints.ToListAsync());
         }
 
@@ -154,18 +155,33 @@ namespace Happy_Analysis.Controllers
         }
         public IActionResult Upload()
         {
+            ViewBag.Upload = 'N';
             return View();
         }
 
-        public IActionResult Upload([Bind("LocationURL")] Dataset dataset)
-        { 
-            using (var client = new WebClient())
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upload(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return Content("File not selected");
+
+            var path = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot",
+                        file.FileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
             {
-                client.DownloadFile(dataset.LocationURL, "dataset.csv");
+                await file.CopyToAsync(stream);
             }
-            if (System.IO.File.Exists("dataset.csv"))
+
+            return LoadDataPoints(path);
+        }
+
+        public IActionResult LoadDataPoints(string path)
+        {
+            if (System.IO.File.Exists(path))
             {
-                string path = System.IO.Path.GetFullPath("dataset.csv");
                 string[] data = System.IO.File.ReadAllLines(path);
                 int lineCount = 0;
                 foreach (string line in data)
@@ -191,9 +207,13 @@ namespace Happy_Analysis.Controllers
                     }
                     lineCount++;
                 }
+                ViewBag.Upload = 'S';
+                ViewBag.Message = "File upload successfully!";
                 return RedirectToAction(nameof(Index));
             }
-            return View();
+            ViewBag.Upload = 'F';
+            ViewBag.Message = "File upload failed";
+            return View("Upload");
         }
     }
 }

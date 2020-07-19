@@ -8514,11 +8514,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\source\\repos\\Happy_Analysis\\Happy_Analysis.csproj",
+      "projectUniqueName": "D:\\source\\repos\\Happy_Analysis_clone\\Happy_Analysis.csproj",
       "projectName": "Happy_Analysis",
-      "projectPath": "D:\\source\\repos\\Happy_Analysis\\Happy_Analysis.csproj",
+      "projectPath": "D:\\source\\repos\\Happy_Analysis_clone\\Happy_Analysis.csproj",
       "packagesPath": "C:\\Users\\Alyssa Jordan\\.nuget\\packages\\",
-      "outputPath": "D:\\source\\repos\\Happy_Analysis\\obj\\",
+      "outputPath": "D:\\source\\repos\\Happy_Analysis_clone\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
