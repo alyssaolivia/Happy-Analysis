@@ -342,10 +342,8 @@ D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\DataPoi
 D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\DataPoint\Upload.cshtml.g.cs
 D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
-D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\ModelRun\Create.cshtml.g.cs
 D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\ModelRun\Delete.cshtml.g.cs
 D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\ModelRun\Details.cshtml.g.cs
-D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\ModelRun\Edit.cshtml.g.cs
 D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\ModelRun\Index.cshtml.g.cs
 D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\source\repos\clean\Happy_Analysis\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
