@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\content\**" />
+    <Content Remove="wwwroot\content\**" />
+    <EmbeddedResource Remove="wwwroot\content\**" />
+    <None Remove="wwwroot\content\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20200712044329_IntialCreate.cs" />
     <Compile Remove="Migrations\20200712044329_IntialCreate.Designer.cs" />
     <Compile Remove="Migrations\20200712173431_UpdateModels.cs" />
@@ -26,7 +33,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
-    <Folder Include="wwwroot\content\" />
   </ItemGroup>
 
 
