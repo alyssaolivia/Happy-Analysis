@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Upload Data Models";
+}
+
+<h1>Upload from File</h1>
+
+<div>
+    <h4>DataPoint</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Upload" method="post" enctype="multipart/form-data">
+                <label>Upload CSV:</label>
+                <input class="form-control-file" type="file" name="file" accept=".csv" /><br/>
+                <input class="btn btn-primary" type="submit" value="Upload File" />
+                <br><br>
+                @ViewBag.Message
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
